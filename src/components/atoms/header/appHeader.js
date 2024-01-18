@@ -6,16 +6,14 @@ import {I18nManager, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Medium from 'typography/medium-text';
 import {Row} from '../row';
-import {SearchInput} from '../inputs';
 import Bold from 'typography/bold-text';
-const HeaderX = ({
+const AppHeader = ({
   style = {},
   mtop = 0,
   title,
   back = true,
-  onChangeText = t => {},
-  isSearch = false,
-  placeholder = 'Search here',
+  onAdd,
+  add = false,
   ...props
 }) => {
   const navigation = useNavigation();
@@ -23,15 +21,9 @@ const HeaderX = ({
     <View style={[styles.container, style]}>
       <Row style={{alignItems: 'center'}}>
         {back ? (
-          <TouchableOpacity
-            style={{
-              backgroundColor: colors.white,
-              padding: mvs(5),
-              borderRadius: mvs(7),
-            }}
-            onPress={() => navigation?.goBack()}>
+          <TouchableOpacity onPress={() => navigation?.goBack()}>
             <Icon
-              name={I18nManager.isRTL ? 'right' : 'left'}
+              name={I18nManager.isRTL ? 'arrowright' : 'arrowleft'}
               size={mvs(20)}
               color={colors.black}
             />
@@ -39,32 +31,40 @@ const HeaderX = ({
         ) : (
           <View />
         )}
+        <Bold fontSize={mvs(20)} label={title} style={[styles.title]} />
 
-        {isSearch && (
-          <SearchInput
-            onChangeText={onChangeText}
-            placeholder={placeholder}
-            mtop={mtop}
-          />
+        {add ? (
+          <TouchableOpacity onPress={onAdd}>
+            <Icon name={'plus'} size={mvs(20)} color={colors.red} />
+          </TouchableOpacity>
+        ) : (
+          <View />
         )}
-        <Bold label={'+'} />
       </Row>
     </View>
   );
 };
-export default React.memo(HeaderX);
+export default React.memo(AppHeader);
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
-    paddingHorizontal: mvs(22),
-    paddingVertical: mvs(15),
+    // backgroundColor: colors.primary,
+    paddingHorizontal: mvs(20),
+    paddingVertical: mvs(10),
+    // borderBottomColor: colors.gray,
+    // borderBottomWidth: 1,
   },
   empty: {
     width: mvs(10),
   },
   title: {
     fontSize: mvs(18),
-    color: colors.white,
+    color: colors.black,
   },
   back: {},
+  cartContainer: {
+    backgroundColor: colors.border,
+    paddingVertical: mvs(5),
+    paddingHorizontal: mvs(20),
+    borderRadius: mvs(6),
+  },
 });

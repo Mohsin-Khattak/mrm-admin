@@ -346,12 +346,12 @@ export const SearchInput = (props: props) => {
         onChangeText={onChangeText}
         style={[styles.searchTextInput, style]}
       />
-      <TouchableOpacity
+      {/* <TouchableOpacity
         disabled={disabledSearch}
         style={styles.searchIcon}
         onPress={() => {}}>
         <Image source={menue} style={{height: mvs(15), width: mvs(25)}} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -442,11 +442,12 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     height: mvs(52),
+    flex:1,
     borderRadius: mvs(15),
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: mvs(16.5),
-    backgroundColor: colors.white,
+    backgroundColor: colors.primary,
     alignItems: 'center',
     // ...colors.shadow,
   },
@@ -457,7 +458,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchTextInput: {
-    color: colors.black,
+    color: colors.white,
     textAlignVertical: 'center',
     height: mvs(36),
     fontSize: mvs(14),

@@ -16,6 +16,7 @@ import Splash from 'screens/splash';
 import {horizontalAnimation} from '../utils';
 import DrawerNavigation from './drawer-navigation/drawer-navigation';
 import HomeTab from 'screens/home-tab';
+import Customers from 'screens/customers';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -40,6 +41,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="Notifications" component={Notifications} />
           <Stack.Screen name="LanguageScreen" component={LanguageScreen} />
           <Stack.Screen name="Search" component={Search} />
+          <Stack.Screen name="Customers" component={Customers} />
         </Stack.Group>
         {/* location group */}
         <Stack.Group>

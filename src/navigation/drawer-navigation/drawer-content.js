@@ -14,11 +14,11 @@ import {
 } from 'assets/images';
 import {colors} from 'config/colors';
 import {mvs} from 'config/metrices';
+import {navigate} from 'navigation/navigation-ref';
 import React, {useState} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Bold from 'typography/bold-text';
 import Medium from 'typography/medium-text';
-import Regular from 'typography/regular-text';
 
 const CustomDrawerContent = props => {
   const [active, setActive] = useState('home');
@@ -48,7 +48,10 @@ const CustomDrawerContent = props => {
       </View>
 
       <TouchableOpacity
-        onPress={() => setActive('home')}
+        onPress={() => {
+          setActive('home');
+          navigate('HomeTab');
+        }}
         style={{
           ...styles.buttonContainer,
           backgroundColor: active == 'home' ? colors.white : colors.primary,
@@ -102,6 +105,7 @@ const CustomDrawerContent = props => {
       <TouchableOpacity
         onPress={() => {
           setActive('customer');
+          navigate('Customers');
         }}
         style={{
           ...styles.buttonContainer,
