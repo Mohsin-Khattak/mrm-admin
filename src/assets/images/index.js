@@ -21,7 +21,7 @@ export {default as homeActive} from './darwerimage/home-active.png';
 export {default as order} from './darwerimage/order.png';
 export {default as orderActive} from './darwerimage/order-active.png';
 export {default as recovery} from './darwerimage/recovery.png';
-export {default as revoveryActive} from './darwerimage/recovery-active.png';
+export {default as recoveryActive} from './darwerimage/recovery-active.png';
 export {default as report} from './darwerimage/report-simple.png';
 export {default as reportActive} from './darwerimage/report-active.png';
 export {default as logout} from './darwerimage/signout-simple.png';

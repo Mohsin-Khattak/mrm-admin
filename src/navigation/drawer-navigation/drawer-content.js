@@ -1,12 +1,27 @@
-import Header1x2x from 'components/atoms/headers/header-1x-2x';
+import {
+  customer,
+  customerActive,
+  home,
+  homeActive,
+  logout,
+  logoutActive,
+  order,
+  orderActive,
+  recovery,
+  recoveryActive,
+  report,
+  reportActive,
+} from 'assets/images';
 import {colors} from 'config/colors';
-import {mvs, width} from 'config/metrices';
-import React from 'react';
+import {mvs} from 'config/metrices';
+import React, {useState} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Bold from 'typography/bold-text';
 import Medium from 'typography/medium-text';
+import Regular from 'typography/regular-text';
 
 const CustomDrawerContent = props => {
+  const [active, setActive] = useState('home');
   return (
     <View style={styles.drawerContainer}>
       <View style={styles.header}>
@@ -33,10 +48,111 @@ const CustomDrawerContent = props => {
       </View>
 
       <TouchableOpacity
+        onPress={() => setActive('home')}
         style={{
           ...styles.buttonContainer,
-          backgroundColor: colors.white,
-        }}></TouchableOpacity>
+          backgroundColor: active == 'home' ? colors.white : colors.primary,
+        }}>
+        <Image
+          style={{width: mvs(40), height: mvs(40)}}
+          source={active == 'home' ? homeActive : home}
+        />
+        <Bold
+          color={active == 'home' ? colors.primary : colors.white}
+          fontSize={mvs(22)}
+          label={'Home'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setActive('order');
+        }}
+        style={{
+          ...styles.buttonContainer,
+          backgroundColor: active == 'order' ? colors.white : colors.primary,
+        }}>
+        <Image
+          style={{width: mvs(40), height: mvs(40)}}
+          source={active == 'order' ? orderActive : order}
+        />
+        <Bold
+          color={active == 'order' ? colors.primary : colors.white}
+          fontSize={mvs(22)}
+          label={'Orders'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setActive('recovery');
+        }}
+        style={{
+          ...styles.buttonContainer,
+          backgroundColor: active == 'recovery' ? colors.white : colors.primary,
+        }}>
+        <Image
+          style={{width: mvs(40), height: mvs(40)}}
+          source={active == 'recovery' ? recoveryActive : recovery}
+        />
+        <Bold
+          color={active == 'recovery' ? colors.primary : colors.white}
+          fontSize={mvs(22)}
+          label={'Orders'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setActive('customer');
+        }}
+        style={{
+          ...styles.buttonContainer,
+          backgroundColor: active == 'customer' ? colors.white : colors.primary,
+        }}>
+        <Image
+          style={{width: mvs(40), height: mvs(40)}}
+          source={active == 'customer' ? customerActive : customer}
+        />
+        <Bold
+          color={active == 'customer' ? colors.primary : colors.white}
+          fontSize={mvs(22)}
+          label={'Customers'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setActive('report');
+        }}
+        style={{
+          ...styles.buttonContainer,
+          backgroundColor: active == 'report' ? colors.white : colors.primary,
+        }}>
+        <Image
+          style={{width: mvs(40), height: mvs(40)}}
+          source={active == 'report' ? reportActive : report}
+        />
+        <Bold
+          color={active == 'report' ? colors.primary : colors.white}
+          fontSize={mvs(22)}
+          label={'Customers'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setActive('signout');
+        }}
+        style={{
+          ...styles.buttonContainer,
+          backgroundColor: active == 'signout' ? colors.white : colors.primary,
+        }}>
+        <Image
+          style={{width: mvs(40), height: mvs(40)}}
+          source={active == 'signout' ? logoutActive : logout}
+        />
+        <Bold
+          color={active == 'signout' ? colors.primary : colors.white}
+          fontSize={mvs(22)}
+          label={'Customers'}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -60,7 +176,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
-    height: mvs(80),
+    height: mvs(60),
     marginTop: mvs(30),
     borderTopRightRadius: mvs(40),
     borderBottomRightRadius: mvs(40),
@@ -68,5 +184,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     justifyContent: 'flex-start',
     gap: mvs(20),
+    alignItems: 'center',
   },
 });
