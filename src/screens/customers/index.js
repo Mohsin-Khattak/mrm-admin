@@ -7,6 +7,7 @@ import i18n from 'translation';
 import styles from './styles';
 import {SearchInput} from 'components/atoms/inputs';
 import {mvs} from 'config/metrices';
+import {navigate} from 'navigation/navigation-ref';
 const Customers = props => {
   const {t} = i18n;
   const [loading, setLoading] = React.useState(true);
@@ -67,12 +68,19 @@ const Customers = props => {
     },
   ];
   const renderCarItem = ({item, index}) => (
-    <CustomersCard item={item} onPress={() => {}} />
+    <CustomersCard
+      item={item}
+      onEdit={() => navigate('AddCustomer', {item: item})}
+    />
   );
 
   return (
     <View style={styles.container}>
-      <AppHeader title={'Customers'} add />
+      <AppHeader
+        title={'Customers'}
+        add
+        onAdd={() => navigate('AddCustomer')}
+      />
       <View style={{height: mvs(50), paddingHorizontal: mvs(20)}}>
         <SearchInput
           // onChangeText={onChangeText}
