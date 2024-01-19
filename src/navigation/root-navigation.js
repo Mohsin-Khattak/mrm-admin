@@ -20,6 +20,8 @@ import Customers from 'screens/customers';
 import AddCustomer from 'screens/add-customers';
 import Recovery from 'screens/recovery';
 import RecoveryDetail from 'screens/recovery-details';
+import Orders from 'screens/orders';
+import OrderDetails from 'screens/order-details';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -48,6 +50,8 @@ export const RootNavigator = () => {
           <Stack.Screen name="AddCustomer" component={AddCustomer} />
           <Stack.Screen name="Recovery" component={Recovery} />
           <Stack.Screen name="RecoveryDetail" component={RecoveryDetail} />
+          <Stack.Screen name="Orders" component={Orders} />
+          <Stack.Screen name="OrderDetails" component={OrderDetails} />
         </Stack.Group>
         {/* location group */}
         <Stack.Group>

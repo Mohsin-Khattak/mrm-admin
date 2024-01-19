@@ -69,6 +69,7 @@ const CustomDrawerContent = props => {
       <TouchableOpacity
         onPress={() => {
           setActive('order');
+          navigate('Orders');
         }}
         style={{
           ...styles.buttonContainer,

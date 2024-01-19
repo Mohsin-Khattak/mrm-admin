@@ -111,7 +111,7 @@ const HomeTab = props => {
             />
           </View>
           <View style={styles.customerContainer}>
-            <Bold color={colors.white} label={'products'} />
+            <Bold color={colors.white} label={'Products'} />
             <Bold
               style={{marginTop: mvs(15)}}
               color={colors.red}
