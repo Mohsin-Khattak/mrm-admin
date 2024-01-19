@@ -1,14 +1,14 @@
 import {EmptyList} from 'components/atoms/empty-list';
 import AppHeader from 'components/atoms/header/appHeader';
-import CustomersCard from 'components/molecules/customers-card';
+import {SearchInput} from 'components/atoms/inputs';
+import RecoveryCard from 'components/molecules/recovery-card';
+import {mvs} from 'config/metrices';
+import {navigate} from 'navigation/navigation-ref';
 import React from 'react';
 import {FlatList, View} from 'react-native';
 import i18n from 'translation';
 import styles from './styles';
-import {SearchInput} from 'components/atoms/inputs';
-import {mvs} from 'config/metrices';
-import {navigate} from 'navigation/navigation-ref';
-const Customers = props => {
+const Recovery = props => {
   const {t} = i18n;
   const [loading, setLoading] = React.useState(true);
   const data = [
@@ -61,19 +61,15 @@ const Customers = props => {
     },
   ];
   const renderCarItem = ({item, index}) => (
-    <CustomersCard
+    <RecoveryCard
       item={item}
-      onEdit={() => navigate('AddCustomer', {data: item})}
+      onPress={() => navigate('RecoveryDetail', {data: item})}
     />
   );
 
   return (
     <View style={styles.container}>
-      <AppHeader
-        title={'Customers'}
-        add
-        onAdd={() => navigate('AddCustomer')}
-      />
+      <AppHeader title={'Recovery'} />
       <View style={{height: mvs(50), paddingHorizontal: mvs(20)}}>
         <SearchInput
           // onChangeText={onChangeText}
@@ -85,7 +81,7 @@ const Customers = props => {
         <FlatList
           contentContainerStyle={styles.contentContainerStyle}
           ListEmptyComponent={
-            !loading && <EmptyList label={'You have no customers yet'} />
+            !loading && <EmptyList label={'You have no recovery yet'} />
           }
           showsVerticalScrollIndicator={false}
           data={data || []}
@@ -95,4 +91,4 @@ const Customers = props => {
     </View>
   );
 };
-export default Customers;
+export default Recovery;

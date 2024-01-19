@@ -12,6 +12,17 @@ export const signinFormValidation = yup.object().shape({
     .required('error_pass_enter')
     .min(8, 'error_pass_short'),
 });
+export const addCustomerFormValidation = yup.object().shape({
+  name: yup.string().required('req_name'),
+  phone: yup
+    .number()
+    .typeError('invalid_phone')
+    .positive('invalid_phone')
+    .integer('invalid_phone')
+    .min(8, 'invalid_phone')
+    .required('Phone is required'),
+    addresss: yup.string().required('Address is required'),
+});
 export const forgotemailFormValidation = yup.object().shape({
   email: yup.string().email('invalid_email').required('req_email'),
 });

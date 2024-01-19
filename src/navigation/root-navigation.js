@@ -18,6 +18,8 @@ import DrawerNavigation from './drawer-navigation/drawer-navigation';
 import HomeTab from 'screens/home-tab';
 import Customers from 'screens/customers';
 import AddCustomer from 'screens/add-customers';
+import Recovery from 'screens/recovery';
+import RecoveryDetail from 'screens/recovery-details';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -44,6 +46,8 @@ export const RootNavigator = () => {
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="Customers" component={Customers} />
           <Stack.Screen name="AddCustomer" component={AddCustomer} />
+          <Stack.Screen name="Recovery" component={Recovery} />
+          <Stack.Screen name="RecoveryDetail" component={RecoveryDetail} />
         </Stack.Group>
         {/* location group */}
         <Stack.Group>

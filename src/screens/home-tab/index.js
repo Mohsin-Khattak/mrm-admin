@@ -102,7 +102,7 @@ const HomeTab = props => {
             />
           </View>
           <View style={styles.customerContainer}>
-            <Bold color={colors.white} label={'Customers'} />
+            <Bold color={colors.white} label={'Salesmen'} />
             <Bold
               style={{marginTop: mvs(10)}}
               color={colors.red}
@@ -111,7 +111,7 @@ const HomeTab = props => {
             />
           </View>
           <View style={styles.customerContainer}>
-            <Bold color={colors.white} label={'Customers'} />
+            <Bold color={colors.white} label={'products'} />
             <Bold
               style={{marginTop: mvs(15)}}
               color={colors.red}

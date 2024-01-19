@@ -9,15 +9,17 @@ import styles from './styles';
 import Bold from 'typography/bold-text';
 import PrimaryInput from 'components/atoms/inputs';
 import {Formik} from 'formik';
-import {signinFormValidation} from 'validations';
+import {addCustomerFormValidation} from 'validations';
 import {PrimaryButton} from 'components/atoms/buttons';
 const AddCustomer = props => {
+  const data = props.route?.params?.data;
+  console.log('Item check===>', data);
   const {t} = i18n;
   const [loading, setLoading] = React.useState(true);
   const initialValues = {
-    name: '',
-    phone: '',
-    address: '',
+    name: data?.name || '',
+    phone: data?.phone || '',
+    address: data?.address || '',
   };
   const handleFormSubmit = async () => {
     try {
@@ -36,12 +38,12 @@ const AddCustomer = props => {
 
   return (
     <View style={styles.container}>
-      <AppHeader title={'Add Customer'} />
+      <AppHeader title={data?.id ? 'Edit Cucstomer' : 'Add Customer'} />
       <View>
         <KeyboardAvoidScrollview>
           <Formik
             initialValues={initialValues}
-            validationSchema={signinFormValidation}
+            validationSchema={addCustomerFormValidation}
             onSubmit={handleFormSubmit}>
             {({
               handleChange,
@@ -69,11 +71,11 @@ const AddCustomer = props => {
                   />
 
                   <PrimaryInput
-                    error={touched?.email ? t(errors.email) : ''}
+                    error={touched?.name ? t(errors.name) : ''}
                     placeholder={t('Enter Username')}
-                    onChangeText={handleChange('email')}
-                    onBlur={handleBlur('email')}
-                    value={values.email}
+                    onChangeText={handleChange('name')}
+                    onBlur={handleBlur('name')}
+                    value={values.name}
                   />
                   <Bold
                     style={{paddingVertical: mvs(10)}}
@@ -81,11 +83,11 @@ const AddCustomer = props => {
                     label={'Enter Mobile Number : *'}
                   />
                   <PrimaryInput
-                    error={touched?.password ? t(errors.password) : ''}
-                    placeholder={t('Enter Password')}
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
+                    error={touched?.phone ? t(errors.phone) : ''}
+                    placeholder={t('Enter Number')}
+                    onChangeText={handleChange('phone')}
+                    onBlur={handleBlur('phone')}
+                    value={values.phone}
                     containerStyle={{marginBottom: 0}}
                     errorStyle={{marginBottom: 0}}
                   />
@@ -95,11 +97,11 @@ const AddCustomer = props => {
                     label={'Enter Address : *'}
                   />
                   <PrimaryInput
-                    error={touched?.password ? t(errors.password) : ''}
-                    placeholder={t('Enter Password')}
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
+                    error={touched?.address ? t(errors.address) : ''}
+                    placeholder={t('Enter Address')}
+                    onChangeText={handleChange('address')}
+                    onBlur={handleBlur('address')}
+                    value={values.address}
                     containerStyle={{marginBottom: 0}}
                     errorStyle={{marginBottom: 0}}
                   />
@@ -114,7 +116,7 @@ const AddCustomer = props => {
                   }}
                   // loading={loading}
                   onPress={handleSubmit}
-                  title={t('Add Customer')}
+                  title={data?.id ? 'Update Customer' : 'Add Customer'}
                 />
               </>
             )}

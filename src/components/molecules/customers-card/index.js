@@ -23,21 +23,17 @@ const CustomersCard = ({item, onEdit}) => {
             gap: mvs(10),
           }}>
           <AntDesign name="user" size={25} color={colors.red} />
-          <Bold fontSize={mvs(18)} color={colors.white} label={'Kashif Ali'} />
+          <Bold fontSize={mvs(18)} color={colors.white} label={item?.name} />
         </Row>
         <TouchableOpacity onPress={onEdit}>
           <FontAwesome5 name="user-edit" size={25} color={colors.red} />
         </TouchableOpacity>
       </Row>
       <View style={styles.numberContainer}>
-        <Regular color={colors.black} label={'03448422399'} />
+        <Regular color={colors.black} label={item?.phone} />
       </View>
       <View style={styles.numberContainer}>
-        <Regular
-          numberOfLines={3}
-          color={colors.black}
-          label={'Lahore pakistan '}
-        />
+        <Regular numberOfLines={3} color={colors.black} label={item.address} />
       </View>
     </View>
   );

@@ -87,6 +87,7 @@ const CustomDrawerContent = props => {
       <TouchableOpacity
         onPress={() => {
           setActive('recovery');
+          navigate('Recovery');
         }}
         style={{
           ...styles.buttonContainer,
@@ -99,7 +100,7 @@ const CustomDrawerContent = props => {
         <Bold
           color={active == 'recovery' ? colors.primary : colors.white}
           fontSize={mvs(22)}
-          label={'Orders'}
+          label={'Recovery'}
         />
       </TouchableOpacity>
       <TouchableOpacity
@@ -136,7 +137,7 @@ const CustomDrawerContent = props => {
         <Bold
           color={active == 'report' ? colors.primary : colors.white}
           fontSize={mvs(22)}
-          label={'Customers'}
+          label={'Reports'}
         />
       </TouchableOpacity>
       <TouchableOpacity
@@ -154,7 +155,7 @@ const CustomDrawerContent = props => {
         <Bold
           color={active == 'signout' ? colors.primary : colors.white}
           fontSize={mvs(22)}
-          label={'Customers'}
+          label={'Sign Out'}
         />
       </TouchableOpacity>
     </View>
