@@ -75,13 +75,13 @@ const Orders = props => {
   return (
     <View style={styles.container}>
       <AppHeader title={'Orders'} />
-      <View style={{height: mvs(50), paddingHorizontal: mvs(20)}}>
+      {/* <View style={{height: mvs(50), paddingHorizontal: mvs(20)}}>
         <SearchInput
           // onChangeText={onChangeText}
           placeholder={'Search'}
           mtop={0}
         />
-      </View>
+      </View> */}
       <Row style={{marginTop: mvs(10), paddingHorizontal: mvs(20)}}>
         <PrimaryButton
           onPress={() => setSelect('pending')}

@@ -8,6 +8,7 @@ import {TouchableOpacity, View} from 'react-native';
 import i18n from 'translation';
 import Bold from 'typography/bold-text';
 import styles from './styles';
+import {navigate} from 'navigation/navigation-ref';
 const HomeTab = props => {
   const user = useAppSelector(s => s?.user);
   const userInfo = user?.userInfo;
@@ -92,7 +93,9 @@ const HomeTab = props => {
           ))}
         </View>
         <Row style={{marginTop: mvs(25)}}>
-          <View style={styles.customerContainer}>
+          <TouchableOpacity
+            onPress={() => navigate('Customers')}
+            style={styles.customerContainer}>
             <Bold color={colors.white} label={'Customers'} />
             <Bold
               style={{marginTop: mvs(10)}}
@@ -100,8 +103,10 @@ const HomeTab = props => {
               fontSize={mvs(22)}
               label={'200'}
             />
-          </View>
-          <View style={styles.customerContainer}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigate('SalesMen')}
+            style={styles.customerContainer}>
             <Bold color={colors.white} label={'Salesmen'} />
             <Bold
               style={{marginTop: mvs(10)}}
@@ -109,8 +114,10 @@ const HomeTab = props => {
               fontSize={mvs(22)}
               label={'200'}
             />
-          </View>
-          <View style={styles.customerContainer}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigate('Products')}
+            style={styles.customerContainer}>
             <Bold color={colors.white} label={'Products'} />
             <Bold
               style={{marginTop: mvs(15)}}
@@ -118,7 +125,7 @@ const HomeTab = props => {
               fontSize={mvs(22)}
               label={'200'}
             />
-          </View>
+          </TouchableOpacity>
         </Row>
       </View>
     </View>

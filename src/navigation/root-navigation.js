@@ -22,6 +22,11 @@ import Recovery from 'screens/recovery';
 import RecoveryDetail from 'screens/recovery-details';
 import Orders from 'screens/orders';
 import OrderDetails from 'screens/order-details';
+import SalesMen from 'screens/salesmen';
+import AddSaleman from 'screens/add-saleman';
+import SalemanDetails from 'screens/saleman-details';
+import Products from 'screens/products';
+import AddProduct from 'screens/add-product';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -52,6 +57,11 @@ export const RootNavigator = () => {
           <Stack.Screen name="RecoveryDetail" component={RecoveryDetail} />
           <Stack.Screen name="Orders" component={Orders} />
           <Stack.Screen name="OrderDetails" component={OrderDetails} />
+          <Stack.Screen name="SalesMen" component={SalesMen} />
+          <Stack.Screen name="AddSaleman" component={AddSaleman} />
+          <Stack.Screen name="SalemanDetails" component={SalemanDetails} />
+          <Stack.Screen name="Products" component={Products} />
+          <Stack.Screen name="AddProduct" component={AddProduct} />
         </Stack.Group>
         {/* location group */}
         <Stack.Group>

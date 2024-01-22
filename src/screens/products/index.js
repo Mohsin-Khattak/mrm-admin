@@ -1,79 +1,75 @@
 import {EmptyList} from 'components/atoms/empty-list';
 import AppHeader from 'components/atoms/header/appHeader';
+import {SearchInput} from 'components/atoms/inputs';
+import ProductsCard from 'components/molecules/products-card';
+import {mvs} from 'config/metrices';
+import {navigate} from 'navigation/navigation-ref';
 import React from 'react';
 import {FlatList, View} from 'react-native';
 import i18n from 'translation';
 import styles from './styles';
-import {SearchInput} from 'components/atoms/inputs';
-import {mvs} from 'config/metrices';
-import {navigate} from 'navigation/navigation-ref';
-import CustomersCard from 'components/molecules/customer-card';
-const Customers = props => {
+const Products = props => {
   const {t} = i18n;
   const [loading, setLoading] = React.useState(true);
   const data = [
     {
       id: 1,
       name: 'Alernative Snacks',
-      address: 'Lahore',
-      phone: '03448422399',
+      price: '5000',
+      type: 'Oil',
     },
     {
       id: 2,
       name: 'Candy',
-      address: 'Karachi',
-      phone: '03448422399',
+      price: '5000',
+      type: 'Oil',
     },
     {
       id: 3,
       name: 'Alernative Snacks',
-      address: 'Lahore',
-      phone: '03448422399',
+      price: '5000',
+      type: 'Oil',
     },
     {
       id: 4,
       name: 'Candy',
-      phone: '03448422399',
-      address: 'Karachi',
+      price: '5000',
+      type: 'Oil',
     },
     {
       id: 5,
       name: 'Alernative Snacks',
-      phone: '03448422399',
-      address: 'Lahore',
+      price: '5000',
+      type: 'Oil',
     },
     {
       id: 6,
       name: 'Candy',
-      phone: '03448422399',
-      address: 'Karachi',
+      price: '5000',
+      type: 'Oil',
     },
     {
       id: 7,
-      phone: '03448422399',
+      price: '5000',
       name: 'Alernative Snacks',
-      address: 'Lahore',
+      type: 'Oil',
     },
     {
       id: 8,
       name: 'Candy',
-      address: 'Karachi',
+      type: 'Oil',
     },
   ];
   const renderCarItem = ({item, index}) => (
-    <CustomersCard
+    <ProductsCard
       item={item}
-      onEdit={() => navigate('AddCustomer', {data: item})}
+      onEdit={() => navigate('AddProduct', {data: item})}
     />
   );
 
   return (
     <View style={styles.container}>
-      <AppHeader
-        title={'Customers'}
-        add
-        onAdd={() => navigate('AddCustomer')}
-      />
+      <AppHeader title={'Products'} add onAdd={() => navigate('AddProduct')} />
       <View style={{height: mvs(50), paddingHorizontal: mvs(20)}}>
         <SearchInput
           // onChangeText={onChangeText}
@@ -95,4 +91,4 @@ const Customers = props => {
     </View>
   );
 };
-export default Customers;
+export default Products;

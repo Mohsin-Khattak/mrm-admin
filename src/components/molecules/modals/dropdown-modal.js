@@ -1,9 +1,9 @@
-import { CrossModal } from 'assets/icons';
-import { ModalWrapper } from 'components/atoms/modal-wrapper';
-import { colors } from 'config/colors';
-import { mvs } from 'config/metrices';
+import {CrossModal} from 'assets/icons';
+import {ModalWrapper} from 'components/atoms/modal-wrapper';
+import {colors} from 'config/colors';
+import {mvs} from 'config/metrices';
 import React from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Medium from 'typography/medium-text';
 
@@ -11,7 +11,7 @@ const DropdownModal = ({
   style = {},
   value,
   visible = false,
-  onClose = item => { },
+  onClose = item => {},
   onChangeText,
   items = [],
 }) => {
@@ -26,11 +26,7 @@ const DropdownModal = ({
         <TouchableOpacity onPress={() => onClose()} style={styles.cross}>
           <CrossModal height={mvs(30)} width={mvs(30)} />
         </TouchableOpacity>
-        <Medium
-          numberOfLines={2}
-          style={styles.pick}
-          label={`Please Select one`}
-        />
+        <Medium numberOfLines={2} style={styles.pick} label={`Select Role `} />
         <ScrollView
           contentContainerStyle={{
             flexGrow: 1,
@@ -40,9 +36,14 @@ const DropdownModal = ({
           {items?.map((item, index) => {
             return (
               <TouchableOpacity
+                key={index}
                 onPress={() => onChangeText(item?.id)}
                 style={styles.button}>
-                <Medium label={item?.title} style={{ fontSize: mvs(16) }} />
+                <Medium
+                  color={colors.black}
+                  label={item?.title}
+                  style={{fontSize: mvs(16)}}
+                />
                 <Icon
                   name={
                     item?.id === value
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     fontSize: mvs(20),
+    color: colors.black,
   },
   button: {
     paddingHorizontal: mvs(30),
@@ -97,5 +99,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 0.7,
   },
-  cross: { padding: mvs(20), alignSelf: 'flex-end', position: 'absolute' },
+  cross: {padding: mvs(20), alignSelf: 'flex-end', position: 'absolute'},
 });
