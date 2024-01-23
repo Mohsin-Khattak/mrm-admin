@@ -4,7 +4,7 @@ import {colors} from 'config/colors';
 import {mvs} from 'config/metrices';
 import {useAppDispatch, useAppSelector} from 'hooks/use-store';
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
 import i18n from 'translation';
 import Bold from 'typography/bold-text';
 import styles from './styles';
@@ -27,107 +27,111 @@ const HomeTab = props => {
   return (
     <View style={styles.container}>
       <Header title={t('Dashboard')} />
-      <View style={styles.body}>
-        <View style={styles.totalMainContainer}>
-          <View style={styles.innerContainer}>
-            <Row>
-              <View>
-                <Bold
-                  fontSize={mvs(16)}
-                  label={'Total Sales'}
-                  color={colors.red}
-                />
-                <Bold
-                  fontSize={mvs(18)}
-                  color={colors.white}
-                  label={'PKR 100,000'}
-                />
-                <Row style={styles.statusRow}>
-                  <View style={styles.statusView} />
-                  <Bold color={colors.red} label={'Pending'} />
-                </Row>
-                <Row style={styles.statusRow}>
-                  <View style={styles.whiteStatusRow} />
-                  <Bold color={colors.white} label={'Recovered'} />
-                </Row>
-              </View>
-              <View></View>
-            </Row>
-          </View>
-          <TouchableOpacity style={{paddingTop: mvs(10), alignSelf: 'center'}}>
-            <Bold
-              color={colors.white}
-              fontSize={mvs(18)}
-              label={'View Details'}
-            />
-          </TouchableOpacity>
-        </View>
-        <Bold
-          style={{marginTop: mvs(20), fontSize: mvs(18)}}
-          label={'Orders'}
-        />
-        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-          {data?.map(item => (
-            <View
-              key={item?.id}
-              style={{
-                width: `${100 / columns}%`,
-                paddingVertical: mvs(10),
-                paddingRight: mvs(10),
-              }}>
-              <View style={styles.innerBodyMap}>
-                <Bold
-                  style={{textAlign: 'center'}}
-                  numberOfLines={2}
-                  color={colors.white}
-                  label={item?.title}
-                />
-                <Bold
-                  style={{marginTop: mvs(10)}}
-                  fontSize={mvs(16)}
-                  label={item?.total}
-                  color={colors.red}
-                />
-              </View>
+      <ScrollView>
+        <View style={styles.body}>
+          <View style={styles.totalMainContainer}>
+            <View style={styles.innerContainer}>
+              <Row>
+                <View>
+                  <Bold
+                    fontSize={mvs(16)}
+                    label={'Total Sales'}
+                    color={colors.red}
+                  />
+                  <Bold
+                    fontSize={mvs(18)}
+                    color={colors.white}
+                    label={'PKR 100,000'}
+                  />
+                  <Row style={styles.statusRow}>
+                    <View style={styles.statusView} />
+                    <Bold color={colors.red} label={'Pending'} />
+                  </Row>
+                  <Row style={styles.statusRow}>
+                    <View style={styles.whiteStatusRow} />
+                    <Bold color={colors.white} label={'Recovered'} />
+                  </Row>
+                </View>
+                <View></View>
+              </Row>
             </View>
-          ))}
+            <TouchableOpacity
+              onPress={() => navigate('Summary')}
+              style={{paddingTop: mvs(10), alignSelf: 'center'}}>
+              <Bold
+                color={colors.white}
+                fontSize={mvs(18)}
+                label={'View Details'}
+              />
+            </TouchableOpacity>
+          </View>
+          <Bold
+            style={{marginTop: mvs(20), fontSize: mvs(18)}}
+            label={'Orders'}
+          />
+          <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+            {data?.map(item => (
+              <View
+                key={item?.id}
+                style={{
+                  width: `${100 / columns}%`,
+                  paddingVertical: mvs(10),
+                  paddingRight: mvs(10),
+                }}>
+                <View style={styles.innerBodyMap}>
+                  <Bold
+                    style={{textAlign: 'center'}}
+                    numberOfLines={2}
+                    color={colors.white}
+                    label={item?.title}
+                  />
+                  <Bold
+                    style={{marginTop: mvs(10)}}
+                    fontSize={mvs(16)}
+                    label={item?.total}
+                    color={colors.red}
+                  />
+                </View>
+              </View>
+            ))}
+          </View>
+          <Row style={{marginTop: mvs(25)}}>
+            <TouchableOpacity
+              onPress={() => navigate('Customers')}
+              style={styles.customerContainer}>
+              <Bold color={colors.white} label={'Customers'} />
+              <Bold
+                style={{marginTop: mvs(10)}}
+                color={colors.red}
+                fontSize={mvs(22)}
+                label={'200'}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigate('SalesMen')}
+              style={styles.customerContainer}>
+              <Bold color={colors.white} label={'Salesmen'} />
+              <Bold
+                style={{marginTop: mvs(10)}}
+                color={colors.red}
+                fontSize={mvs(22)}
+                label={'200'}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigate('Products')}
+              style={styles.customerContainer}>
+              <Bold color={colors.white} label={'Products'} />
+              <Bold
+                style={{marginTop: mvs(15)}}
+                color={colors.red}
+                fontSize={mvs(22)}
+                label={'200'}
+              />
+            </TouchableOpacity>
+          </Row>
         </View>
-        <Row style={{marginTop: mvs(25)}}>
-          <TouchableOpacity
-            onPress={() => navigate('Customers')}
-            style={styles.customerContainer}>
-            <Bold color={colors.white} label={'Customers'} />
-            <Bold
-              style={{marginTop: mvs(10)}}
-              color={colors.red}
-              fontSize={mvs(22)}
-              label={'200'}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate('SalesMen')}
-            style={styles.customerContainer}>
-            <Bold color={colors.white} label={'Salesmen'} />
-            <Bold
-              style={{marginTop: mvs(10)}}
-              color={colors.red}
-              fontSize={mvs(22)}
-              label={'200'}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate('Products')}
-            style={styles.customerContainer}>
-            <Bold color={colors.white} label={'Products'} />
-            <Bold
-              style={{marginTop: mvs(15)}}
-              color={colors.red}
-              fontSize={mvs(22)}
-              label={'200'}
-            />
-          </TouchableOpacity>
-        </Row>
-      </View>
+      </ScrollView>
     </View>
   );
 };

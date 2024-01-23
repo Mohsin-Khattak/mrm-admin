@@ -126,6 +126,7 @@ const CustomDrawerContent = props => {
       <TouchableOpacity
         onPress={() => {
           setActive('report');
+          navigate('Reports');
         }}
         style={{
           ...styles.buttonContainer,
@@ -144,6 +145,7 @@ const CustomDrawerContent = props => {
       <TouchableOpacity
         onPress={() => {
           setActive('signout');
+          navigate('Login');
         }}
         style={{
           ...styles.buttonContainer,
@@ -167,8 +169,8 @@ const styles = StyleSheet.create({
   drawerContainer: {
     flex: 1,
     backgroundColor: colors.primary,
-    borderTopRightRadius: mvs(60),
-    borderBottomRightRadius: mvs(60),
+    borderTopRightRadius: mvs(30),
+    borderBottomRightRadius: mvs(30),
   },
   header: {
     alignItems: 'center',

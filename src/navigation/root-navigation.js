@@ -27,6 +27,8 @@ import AddSaleman from 'screens/add-saleman';
 import SalemanDetails from 'screens/saleman-details';
 import Products from 'screens/products';
 import AddProduct from 'screens/add-product';
+import Reports from 'screens/reports';
+import Summary from 'screens/Summary';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -39,7 +41,7 @@ export const RootNavigator = () => {
         barStyle={'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="Drawer"
+        initialRouteName="Login"
         screenOptions={horizontalAnimation}>
         <Stack.Group>
           <Stack.Screen name="Splash" component={Splash} />
@@ -62,6 +64,8 @@ export const RootNavigator = () => {
           <Stack.Screen name="SalemanDetails" component={SalemanDetails} />
           <Stack.Screen name="Products" component={Products} />
           <Stack.Screen name="AddProduct" component={AddProduct} />
+          <Stack.Screen name="Reports" component={Reports} />
+          <Stack.Screen name="Summary" component={Summary} />
         </Stack.Group>
         {/* location group */}
         <Stack.Group>

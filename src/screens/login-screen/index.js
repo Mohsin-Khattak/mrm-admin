@@ -8,7 +8,6 @@ import {navigate, resetStack} from 'navigation/navigation-ref';
 import React from 'react';
 import {Image, ImageBackground, TouchableOpacity, View} from 'react-native';
 
-import {SplashIcon} from 'assets/icons';
 import PrimaryInput from 'components/atoms/inputs';
 import {KeyboardAvoidScrollview} from 'components/atoms/keyboard-avoid-scrollview/index';
 import {colors} from 'config/colors';

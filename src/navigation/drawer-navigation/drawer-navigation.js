@@ -12,8 +12,8 @@ const DrawerNavigation = () => {
       screenOptions={{
         drawerStyle: {
           width: width - 100,
-          borderTopRightRadius: mvs(60),
-          borderBottomRightRadius: mvs(60),
+          borderTopRightRadius: mvs(30),
+          borderBottomRightRadius: mvs(30),
         },
         headerShown: false,
       }}

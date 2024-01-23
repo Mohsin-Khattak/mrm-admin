@@ -2,7 +2,7 @@ import AppHeader from 'components/atoms/header/appHeader';
 import {KeyboardAvoidScrollview} from 'components/atoms/keyboard-avoid-scrollview';
 import {colors} from 'config/colors';
 import {mvs} from 'config/metrices';
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import i18n from 'translation';
 import styles from './styles';
@@ -14,17 +14,23 @@ import {PrimaryButton} from 'components/atoms/buttons';
 const AddProduct = props => {
   const data = props.route?.params?.data;
 
-  const desig = [
+  const products = [
     {id: 1, title: 'Oil'},
     {id: 2, title: 'Drink'},
   ];
+
   const {t} = i18n;
+  const [product, setProduct] = useState(data?.type); // Initial value can be set as needed
+
   const [loading, setLoading] = React.useState(true);
   const initialValues = {
     name: data?.name || '',
     price: data?.price || '',
-
     type: data?.type || '',
+  };
+
+  const handleChangeDesignation = newDesignation => {
+    setProduct(newDesignation);
   };
   const handleFormSubmit = async () => {
     try {
@@ -105,10 +111,10 @@ const AddProduct = props => {
                   />
                   <InputWithIcon
                     error={touched?.type ? t(errors.type) : ''}
-                    items={desig}
-                    // onChangeText={handleChange('type')}
-                    // onBlur={handleBlur('type')}
-                    value={values.type}
+                    items={products}
+                    onChangeText={handleChangeDesignation}
+                    value={product}
+                    id={product}
                   />
                 </View>
 

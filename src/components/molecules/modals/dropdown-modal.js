@@ -26,7 +26,11 @@ const DropdownModal = ({
         <TouchableOpacity onPress={() => onClose()} style={styles.cross}>
           <CrossModal height={mvs(30)} width={mvs(30)} />
         </TouchableOpacity>
-        <Medium numberOfLines={2} style={styles.pick} label={`Select Role `} />
+        <Medium
+          numberOfLines={2}
+          style={styles.pick}
+          label={`Please Select one`}
+        />
         <ScrollView
           contentContainerStyle={{
             flexGrow: 1,
@@ -37,7 +41,7 @@ const DropdownModal = ({
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => onChangeText(item?.id)}
+                onPress={() => onChangeText(item?.title)}
                 style={styles.button}>
                 <Medium
                   color={colors.black}
@@ -46,7 +50,7 @@ const DropdownModal = ({
                 />
                 <Icon
                   name={
-                    item?.id === value
+                    item?.title === value
                       ? 'radio-button-checked'
                       : 'radio-button-unchecked'
                   }

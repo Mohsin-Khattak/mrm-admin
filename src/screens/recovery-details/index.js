@@ -1,6 +1,6 @@
 import AppHeader from 'components/atoms/header/appHeader';
 import React from 'react';
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {ScrollView} from 'react-native';
 import {mvs} from 'config/metrices';
@@ -9,10 +9,18 @@ import {colors} from 'config/colors';
 import Medium from 'typography/medium-text';
 import {Row} from 'components/atoms/row';
 import {Image} from 'react-native';
+import ImageView from 'react-native-image-viewing';
 const RecoveryDetail = props => {
+  const [visible, setIsVisible] = React.useState(false);
+  const [imageUri, setImageUri] = React.useState('');
+  const handleImagePress = uri => {
+    setImageUri(uri);
+    setIsVisible(true);
+  };
   return (
     <View style={styles.container}>
       <AppHeader title={'Recovery Details'} />
+
       <ScrollView style={{paddingHorizontal: mvs(20), marginBottom: mvs(20)}}>
         <View style={styles.detailContainer}>
           <Bold style={styles.title} label={'Customer Name :'} />
@@ -62,29 +70,51 @@ const RecoveryDetail = props => {
                 color={colors.white}
                 fontSize={mvs(18)}
               />
-              <Image
+              <TouchableOpacity
                 style={{width: '100%', height: mvs(200), marginTop: mvs(10)}}
-                source={{
-                  uri: 'https://storage.googleapis.com/support-forums-api/attachment/thread-151949760-12927169851677489027.jpg',
-                }}
-              />
+                onPress={() =>
+                  handleImagePress(
+                    'https://storage.googleapis.com/support-forums-api/attachment/thread-151949760-12927169851677489027.jpg',
+                  )
+                }>
+                <Image
+                  style={{width: '100%', height: mvs(200)}}
+                  source={{
+                    uri: 'https://storage.googleapis.com/support-forums-api/attachment/thread-151949760-12927169851677489027.jpg',
+                  }}
+                />
+              </TouchableOpacity>
             </View>
-            <View style={{width: '45%', alignItems: 'center'}}>
+            <View style={{width: '48%', alignItems: 'center'}}>
               <Bold
                 label={'Bank Slip :'}
                 color={colors.white}
                 fontSize={mvs(18)}
               />
-              <Image
+              <TouchableOpacity
                 style={{width: '100%', height: mvs(200), marginTop: mvs(10)}}
-                source={{
-                  uri: 'https://storage.googleapis.com/support-forums-api/attachment/thread-151949760-12927169851677489027.jpg',
-                }}
-              />
+                onPress={() =>
+                  handleImagePress(
+                    'https://storage.googleapis.com/support-forums-api/attachment/thread-151949760-12927169851677489027.jpg',
+                  )
+                }>
+                <Image
+                  style={{width: '100%', height: mvs(200)}}
+                  source={{
+                    uri: 'https://storage.googleapis.com/support-forums-api/attachment/thread-151949760-12927169851677489027.jpg',
+                  }}
+                />
+              </TouchableOpacity>
             </View>
           </Row>
         </View>
       </ScrollView>
+      <ImageView
+        images={[{uri: imageUri}]}
+        imageIndex={0}
+        visible={visible}
+        onRequestClose={() => setIsVisible(false)}
+      />
     </View>
   );
 };

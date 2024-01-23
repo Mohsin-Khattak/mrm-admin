@@ -2,7 +2,7 @@ import AppHeader from 'components/atoms/header/appHeader';
 import {KeyboardAvoidScrollview} from 'components/atoms/keyboard-avoid-scrollview';
 import {colors} from 'config/colors';
 import {mvs} from 'config/metrices';
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import i18n from 'translation';
 import styles from './styles';
@@ -17,6 +17,7 @@ const AddSaleman = props => {
   const desig = [
     {id: 1, title: 'Manager'},
     {id: 2, title: 'Assistant'},
+    {id: 3, title: 'Jr Assistant'},
   ];
   const {t} = i18n;
   const [loading, setLoading] = React.useState(true);
@@ -26,7 +27,7 @@ const AddSaleman = props => {
     address: data?.address || '',
     id: data?.id || '',
     email: data?.email || '',
-    designation: data?.designation || '',
+    designation: data?.designation || designations,
   };
   const handleFormSubmit = async () => {
     try {
@@ -42,12 +43,17 @@ const AddSaleman = props => {
       console.log('error=>', error);
     }
   };
+  const [designations, setDesignation] = useState(data?.designation); // Initial value can be set as needed
+
+  const handleChangeDesignation = newDesignation => {
+    setDesignation(newDesignation);
+  };
 
   return (
     <View style={styles.container}>
       <AppHeader title={data?.id ? 'Edit Saleman' : 'Add Saleman'} />
       <View>
-        <KeyboardAvoidScrollview>
+        <KeyboardAvoidScrollview showsVerticalScrollIndicator={false}>
           <Formik
             initialValues={initialValues}
             validationSchema={addCustomerFormValidation}
@@ -134,9 +140,9 @@ const AddSaleman = props => {
                   <InputWithIcon
                     error={touched?.designation ? t(errors.designation) : ''}
                     items={desig}
-                    // onChangeText={handleChange('designation')}
-                    // onBlur={handleBlur('designation')}
-                    value={values.designation}
+                    onChangeText={handleChangeDesignation}
+                    value={designations}
+                    id={designations}
                   />
                   <Bold
                     style={{paddingVertical: mvs(10)}}
