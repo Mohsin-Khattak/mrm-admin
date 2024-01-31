@@ -17,13 +17,13 @@ const HomeTab = props => {
   const {t} = i18n;
 
   const data = [
-    {id: 1, title: 'Over All', total: '50'},
-    {id: 2, title: 'To ab Delivered', total: '10'},
-    {id: 3, title: 'In Transit', total: '15'},
-    {id: 4, title: 'Completed', total: '20'},
-    {id: 5, title: 'Delayed', total: '25'},
+    {id: 1, title: 'Over All', total: '50', screen: 'Orders'},
+    {id: 2, title: 'To be Delivered', total: '10', screen: 'Orders'},
+    {id: 3, title: 'In Transit', total: '15', screen: 'Orders'},
+    {id: 4, title: 'Completed', total: '20', screen: 'Orders'},
+    {id: 5, title: 'Delayed', total: '25', screen: 'Orders'},
   ];
-  const columns = 3;
+
   return (
     <View style={styles.container}>
       <Header title={t('Dashboard')} />
@@ -71,10 +71,11 @@ const HomeTab = props => {
           />
           <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
             {data?.map(item => (
-              <View
+              <TouchableOpacity
+                onPress={() => navigate(item?.screen)}
                 key={item?.id}
                 style={{
-                  width: `${100 / columns}%`,
+                  width: `${100 / 3}%`,
                   paddingVertical: mvs(10),
                   paddingRight: mvs(10),
                 }}>
@@ -92,7 +93,7 @@ const HomeTab = props => {
                     color={colors.red}
                   />
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
           <Row style={{marginTop: mvs(25)}}>

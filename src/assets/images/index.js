@@ -33,3 +33,4 @@ export {default as loginIcon} from './loginicon.png';
 export {default as menuIcon} from './menu.png';
 export {default as LoginBackground} from './Loginbackground.png';
 export {default as giftHand} from './gift.png';
+export {default as Kids} from './kids.jpg';

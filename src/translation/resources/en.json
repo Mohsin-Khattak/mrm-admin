@@ -8,5 +8,15 @@
   "login": "Login",
   "signup": "Signup",
   "next": "Next",
-  "get_started": "Get Started"
+  "get_started": "Get Started",
+  "please_enter_email":"Please Enter your Email",
+  "please_enter_name":"Please Enter Your Name",
+  "req_first_name":"Fisrt Name is Required",
+  "req_email":"Email is Required",
+  "req_password":"Password is Required",
+  "req_confirm_password":"Confirm Password is Required",
+  "invalid_email":"Invalid Email",
+  "error_pass_short":"Password must be 8 characters",
+  "weak_pass":"Password is weak",
+  "miss_match_pass":"Password did not match"
 }

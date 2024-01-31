@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     // paddingVertical: mvs(10),
+    marginTop: mvs(10),
   },
 
   btn: {

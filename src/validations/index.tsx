@@ -9,7 +9,7 @@ export const signinFormValidation = yup.object().shape({
   email: yup.string().email('invalid_email').required('req_email'),
   password: yup
     .string()
-    .required('error_pass_enter')
+    .required('req_password')
     .min(8, 'error_pass_short'),
 });
 export const addCustomerFormValidation = yup.object().shape({

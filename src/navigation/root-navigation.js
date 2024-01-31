@@ -4,31 +4,32 @@ import {colors} from 'config/colors';
 import * as React from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Summary from 'screens/Summary';
+import AddCustomer from 'screens/add-customers';
+import AddProduct from 'screens/add-product';
+import AddSaleman from 'screens/add-saleman';
+import Customers from 'screens/customers';
+import HomeTab from 'screens/home-tab';
 import LanguageScreen from 'screens/language-screen';
 import LocationSetup from 'screens/location-setup';
 import LoginScreen from 'screens/login-screen';
 import Me from 'screens/me';
 import Notifications from 'screens/notifications';
 import Onboarding from 'screens/on-boarding';
+import OrderDetails from 'screens/order-details';
+import Orders from 'screens/orders';
+import Products from 'screens/products';
+import Recovery from 'screens/recovery';
+import RecoveryDetail from 'screens/recovery-details';
+import Reports from 'screens/reports';
+import SalemanDetails from 'screens/saleman-details';
+import SalesMen from 'screens/salesmen';
 import Search from 'screens/search';
 import Signup from 'screens/signup';
 import Splash from 'screens/splash';
 import {horizontalAnimation} from '../utils';
 import DrawerNavigation from './drawer-navigation/drawer-navigation';
-import HomeTab from 'screens/home-tab';
-import Customers from 'screens/customers';
-import AddCustomer from 'screens/add-customers';
-import Recovery from 'screens/recovery';
-import RecoveryDetail from 'screens/recovery-details';
-import Orders from 'screens/orders';
-import OrderDetails from 'screens/order-details';
-import SalesMen from 'screens/salesmen';
-import AddSaleman from 'screens/add-saleman';
-import SalemanDetails from 'screens/saleman-details';
-import Products from 'screens/products';
-import AddProduct from 'screens/add-product';
-import Reports from 'screens/reports';
-import Summary from 'screens/Summary';
+import ForgotPassword from 'screens/forgot-password';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -41,10 +42,11 @@ export const RootNavigator = () => {
         barStyle={'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Splash"
         screenOptions={horizontalAnimation}>
         <Stack.Group>
           <Stack.Screen name="Splash" component={Splash} />
+
           <Stack.Screen name="HomeTab" component={HomeTab} />
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="Me" component={Me} />
@@ -66,6 +68,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="AddProduct" component={AddProduct} />
           <Stack.Screen name="Reports" component={Reports} />
           <Stack.Screen name="Summary" component={Summary} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         </Stack.Group>
         {/* location group */}
         <Stack.Group>

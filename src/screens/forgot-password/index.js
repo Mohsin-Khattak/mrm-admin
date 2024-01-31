@@ -1,13 +1,11 @@
-import messaging from '@react-native-firebase/messaging';
 import {LoginBackground, loginIcon, splash} from 'assets/images';
 import {PrimaryButton} from 'components/atoms/buttons';
 import {mvs} from 'config/metrices';
 import {Formik, useFormik} from 'formik';
 import {useAppDispatch} from 'hooks/use-store';
-import {navigate, resetStack} from 'navigation/navigation-ref';
+import {navigate} from 'navigation/navigation-ref';
 import React from 'react';
 import {Image, ImageBackground, TouchableOpacity, View} from 'react-native';
-
 import PrimaryInput from 'components/atoms/inputs';
 import {KeyboardAvoidScrollview} from 'components/atoms/keyboard-avoid-scrollview/index';
 import {colors} from 'config/colors';
@@ -16,7 +14,7 @@ import Bold from 'typography/bold-text';
 import Medium from 'typography/medium-text';
 import {signinFormValidation} from 'validations';
 import styles from './styles';
-const LoginScreen = props => {
+const ForgotPassword = props => {
   const dispatch = useAppDispatch();
   const {t} = i18n;
   const [otpModalVisible, setOtpModalVisible] = React.useState(false);
@@ -36,14 +34,7 @@ const LoginScreen = props => {
     });
   const handleFormSubmit = async () => {
     try {
-      messaging()
-        .getToken()
-        .then(fcmToken => {
-          console.log('fcmToken=>', fcmToken);
-          // dispatch(onLogin({ ...values, token: fcmToken }, setLoading, props));
-          resetStack('Drawer');
-        })
-        .catch(error => console.log(error));
+      // dispatch(onLogin({ ...values, token: fcmToken }, setLoading, props));
     } catch (error) {
       console.log('error=>', error);
     }
@@ -69,7 +60,7 @@ const LoginScreen = props => {
                   source={splash}
                 />
                 <Bold
-                  label={t('Login Account')}
+                  label={t('Forgot Password')}
                   color={colors.primary}
                   fontSize={mvs(18)}
                   style={styles.loginmoverstext}
@@ -97,36 +88,26 @@ const LoginScreen = props => {
                         onBlur={handleBlur('email')}
                         value={values.email}
                       />
-                      <PrimaryInput
-                        isPassword
-                        error={touched?.password ? t(errors.password) : ''}
-                        placeholder={t('Enter Password')}
-                        // label={t('password')}
-                        onChangeText={handleChange('password')}
-                        onBlur={handleBlur('password')}
-                        value={values.password}
-                        containerStyle={{marginBottom: 0}}
-                        errorStyle={{marginBottom: 0}}
-                      />
-                      <TouchableOpacity
-                        style={styles.forgotpasswordview}
-                        onPress={() => navigate('ForgotPassword')}>
-                        <Medium
-                          label={t('forgot_password?')}
-                          style={{
-                            textDecorationLine: 'underline',
-                            color: colors.red,
-                          }}
-                        />
-                      </TouchableOpacity>
+
                       <PrimaryButton
                         containerStyle={{
                           borderRadius: mvs(10),
                         }}
                         loading={loading}
                         onPress={handleSubmit}
-                        title={t('login')}
+                        title={t('Send')}
                       />
+                      <TouchableOpacity
+                        style={styles.forgotpasswordview}
+                        onPress={() => navigate('ForgotPasswordScreen')}>
+                        <Medium
+                          label={t('Back to  Login ?')}
+                          style={{
+                            textDecorationLine: 'underline',
+                            color: colors.red,
+                          }}
+                        />
+                      </TouchableOpacity>
                     </>
                   )}
                 </Formik>
@@ -138,4 +119,4 @@ const LoginScreen = props => {
     </View>
   );
 };
-export default LoginScreen;
+export default ForgotPassword;

@@ -12,10 +12,13 @@ import SalemanCard from 'components/molecules/salesman-card';
 const SalesMen = props => {
   const {t} = i18n;
   const [loading, setLoading] = React.useState(true);
+  const [search, setSearch] = React.useState('');
+  const [searchData, setSearchData] = React.useState([]);
+
   const data = [
     {
       id: 1,
-      name: 'Alernative Snacks',
+      name: 'Snacks',
       address: 'Lahore',
       phone: '03448422399',
       designation: 'Manager',
@@ -29,21 +32,21 @@ const SalesMen = props => {
     },
     {
       id: 3,
-      name: 'Alernative Snacks',
+      name: 'Ali',
       address: 'Lahore',
       phone: '03448422399',
       designation: 'Manager',
     },
     {
       id: 4,
-      name: 'Candy',
+      name: 'Hamza',
       phone: '03448422399',
       address: 'Karachi',
       designation: 'Manager',
     },
     {
       id: 5,
-      name: 'Alernative Snacks',
+      name: 'Kashif',
       phone: '03448422399',
       address: 'Lahore',
       designation: 'Manager',
@@ -82,8 +85,9 @@ const SalesMen = props => {
       <AppHeader title={'Salesman'} add onAdd={() => navigate('AddSaleman')} />
       <View style={{height: mvs(50), paddingHorizontal: mvs(20)}}>
         <SearchInput
-          // onChangeText={onChangeText}
+          onChangeText={setSearch}
           placeholder={'Search'}
+          value={search}
           mtop={0}
         />
       </View>
